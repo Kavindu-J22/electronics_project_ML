@@ -43,10 +43,10 @@ def evaluate_all_videos():
                 'confidence': confidence,
                 'correct': correct
             })
-            status = "✅ Correct" if correct else "❌ Wrong"
+            status = "CORRECT" if correct else "WRONG"
             print(f"  {i:2d}. {filename:15s}: {status} (conf: {confidence:.3f})")
         except Exception as e:
-            print(f"  {i:2d}. {filename:15s}: ❌ Error - {str(e)}")
+            print(f"  {i:2d}. {filename:15s}: ERROR - {str(e)}")
     
     print("\nEvaluating incorrectly worn videos...")
     incorrectly_worn_files = [f for f in os.listdir(incorrectly_worn_dir) if f.endswith('.mp4')]
@@ -173,19 +173,19 @@ def evaluate_all_videos():
             print(f"   Confidence: {row['confidence']:.3f}")
             print()
     else:
-        print("\n🎉 No misclassified videos! Perfect accuracy!")
+        print("\nNo misclassified videos! Perfect accuracy!")
     
     print("="*60)
     
     # Performance summary
     if accuracy >= 0.9:
-        print("🎉 EXCELLENT performance! Model is working very well.")
+        print("EXCELLENT performance! Model is working very well.")
     elif accuracy >= 0.8:
-        print("👍 GOOD performance! Model is working well.")
+        print("GOOD performance! Model is working well.")
     elif accuracy >= 0.7:
-        print("👌 FAIR performance! Model shows promise but could be improved.")
+        print("FAIR performance! Model shows promise but could be improved.")
     else:
-        print("⚠️  POOR performance! Model needs significant improvement.")
+        print("POOR performance! Model needs significant improvement.")
     
     print("\nRecommendations:")
     if accuracy < 0.8:
